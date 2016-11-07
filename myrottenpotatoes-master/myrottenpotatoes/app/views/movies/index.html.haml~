@@ -1,0 +1,26 @@
+-#  This file is app/views/movies/index.html.haml
+%h1 All Movies
+
+%table#movies
+  %thead
+    %tr
+      %th Movie Title
+      %th Rating
+      %th Release Date
+      %th More Info
+  %tbody
+    - @movies.each do |movie|
+      %tr
+        %td= movie.title
+        %td= movie.rating
+        %td= movie.release_date
+        %td= link_to "More about #{movie.title}", movie_path(movie)
+
+-# Our Edit link from previous example:
+	=link_to 'Edit info', edit_movie_path(@movie)
+-# This Delete link will not really be a link, but a form:
+	= link_to 'Delete', movie_path(@movie), :method => :delete
+-# add to end of index.html.haml
+	= link_to 'Add new movie', new_movie_path
+
+
